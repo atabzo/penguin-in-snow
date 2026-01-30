@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="pegion-in-snow"
+run/main_scene="uid://b8ccqoaqpig3t"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,3 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

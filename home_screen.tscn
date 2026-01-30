@@ -21,27 +21,27 @@ offset_bottom = 659.0
 theme_override_colors/font_color = Color(0.26377144, 0.0001453308, 0.3126142, 1)
 theme_override_fonts/font = ExtResource("1_olt8n")
 theme_override_font_sizes/font_size = 146
-text = "Save the Penguin!"
+text = "Save the Pegion!"
 autowrap_mode = 2
 
 [node name="Sun" type="Sprite2D" parent="."]
-position = Vector2(1110, 182)
-scale = Vector2(0.76500005, 0.79200006)
+position = Vector2(1115, 184)
+scale = Vector2(0.59650004, 0.6140001)
 texture = ExtResource("2_ktig4")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 855.0
 offset_top = 436.0
-offset_right = 1216.0
+offset_right = 1233.0
 offset_bottom = 533.0
 theme_override_fonts/font = ExtResource("1_olt8n")
 theme_override_font_sizes/font_size = 58
-text = "LETSGOOOOO"
+text = "LETSGOOOO"
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 853.0
 offset_top = 565.0
-offset_right = 1211.0
+offset_right = 1231.0
 offset_bottom = 657.0
 theme_override_fonts/font = ExtResource("1_olt8n")
 theme_override_font_sizes/font_size = 64
