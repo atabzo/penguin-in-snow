@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8ccqoaqpig3t"]
+[gd_scene load_steps=3 format=3 uid="uid://b8ccqoaqpig3t"]
 
 [ext_resource type="FontFile" uid="uid://cffniahme70vv" path="res://fonts/BitcountPropDoubleInk.ttf" id="1_olt8n"]
+[ext_resource type="Texture2D" uid="uid://djbmb4upyko1a" path="res://images/sun.png" id="2_ktig4"]
 
 [node name="home-screen" type="Node2D"]
 
@@ -13,11 +14,35 @@ color = Color(0.9332014, 0.7778493, 0.81564164, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 332.0
-offset_right = 1127.0
-offset_bottom = 452.0
+offset_left = 71.0
+offset_top = 125.0
+offset_right = 636.0
+offset_bottom = 659.0
 theme_override_colors/font_color = Color(0.26377144, 0.0001453308, 0.3126142, 1)
 theme_override_fonts/font = ExtResource("1_olt8n")
-theme_override_font_sizes/font_size = 98
+theme_override_font_sizes/font_size = 146
 text = "Save the Penguin!"
+autowrap_mode = 2
+
+[node name="Sun" type="Sprite2D" parent="."]
+position = Vector2(1110, 182)
+scale = Vector2(0.76500005, 0.79200006)
+texture = ExtResource("2_ktig4")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 855.0
+offset_top = 436.0
+offset_right = 1216.0
+offset_bottom = 533.0
+theme_override_fonts/font = ExtResource("1_olt8n")
+theme_override_font_sizes/font_size = 58
+text = "LETSGOOOOO"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 853.0
+offset_top = 565.0
+offset_right = 1211.0
+offset_bottom = 657.0
+theme_override_fonts/font = ExtResource("1_olt8n")
+theme_override_font_sizes/font_size = 64
+text = "NEVERMIND"
