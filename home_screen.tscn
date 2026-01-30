@@ -1,10 +1,23 @@
-[gd_scene format=3 uid="uid://b8ccqoaqpig3t"]
+[gd_scene load_steps=2 format=3 uid="uid://b8ccqoaqpig3t"]
+
+[ext_resource type="FontFile" uid="uid://cffniahme70vv" path="res://fonts/BitcountPropDoubleInk.ttf" id="1_olt8n"]
 
 [node name="home-screen" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -32.0
-offset_top = -19.0
-offset_right = 1291.0
-offset_bottom = 737.0
-color = Color(0.3436775, 0.7313441, 0.85283697, 1)
+offset_left = -14.0
+offset_top = -23.0
+offset_right = 1309.0
+offset_bottom = 733.0
+color = Color(0.9332014, 0.7778493, 0.81564164, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 332.0
+offset_right = 1127.0
+offset_bottom = 452.0
+theme_override_colors/font_color = Color(0.26377144, 0.0001453308, 0.3126142, 1)
+theme_override_fonts/font = ExtResource("1_olt8n")
+theme_override_font_sizes/font_size = 98
+text = "Save the Penguin!"
