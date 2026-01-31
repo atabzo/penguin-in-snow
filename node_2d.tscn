@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bvmkru6x6otgg"]
+
+[node name="end-screen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -50.0
+offset_top = -66.0
+offset_right = 1307.0
+offset_bottom = 811.0

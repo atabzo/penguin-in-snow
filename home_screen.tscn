@@ -197,12 +197,12 @@ autowrap_mode = 2
 stream = ExtResource("4_fm0op")
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 562.0
-offset_top = 559.0
-offset_right = 888.0
-offset_bottom = 651.0
+offset_left = 622.0
+offset_top = 562.0
+offset_right = 879.0
+offset_bottom = 642.0
 theme_override_fonts/font = ExtResource("1_olt8n")
-theme_override_font_sizes/font_size = 55
+theme_override_font_sizes/font_size = 43
 text = "NEVERMIND"
 script = SubResource("GDScript_fm0op")
 
@@ -212,12 +212,12 @@ scale = Vector2(0.59650004, 0.6140001)
 texture = ExtResource("2_ktig4")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 898.0
-offset_top = 557.0
-offset_right = 1228.0
-offset_bottom = 652.0
+offset_left = 939.0
+offset_top = 562.0
+offset_right = 1205.0
+offset_bottom = 642.0
 theme_override_fonts/font = ExtResource("1_olt8n")
-theme_override_font_sizes/font_size = 55
+theme_override_font_sizes/font_size = 43
 text = "LETS GOOO"
 script = SubResource("GDScript_outur")
 
