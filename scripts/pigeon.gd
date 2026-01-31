@@ -47,10 +47,10 @@ func _physics_process(delta):
 
 	# ANIMATIONS
 	if height > 10:
-		animated_sprite.play("default")
-	elif forward > 0:
-		animated_sprite.play("default")
+		animated_sprite.play("fly")
+	elif forward < 1:
+		animated_sprite.play("idle")
 	else:
-		animated_sprite.play("default")
+		animated_sprite.play("fly")
 
 	move_and_slide()
