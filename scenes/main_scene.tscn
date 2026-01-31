@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dce0ny6i0l6si" path="res://assets/Winter/spritesheet.png" id="2_pu3yx"]
 [ext_resource type="Texture2D" uid="uid://dteutsypy36jn" path="res://assets/Winter/Terrain/Ice/Ice.png" id="3_gubc5"]
 [ext_resource type="PackedScene" uid="uid://coytmnnqpcdj0" path="res://scenes/pigeon.tscn" id="4_pu3yx"]
-[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/BirdOnTree.png" id="5_c1pb6"]
-[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/FallenTree.png" id="6_6wevv"]
-[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/Light.png" id="7_e1cbu"]
-[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/Snowman.png" id="8_mngbo"]
-[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/Tree.png" id="9_4w45t"]
+[ext_resource type="Texture2D" uid="uid://bb47kinxsbn0l" path="res://assets/MDrawnAssets/Decorations/BirdOnTree.png" id="5_c1pb6"]
+[ext_resource type="Texture2D" uid="uid://cbtebv3ttmfkc" path="res://assets/MDrawnAssets/Decorations/FallenTree.png" id="6_6wevv"]
+[ext_resource type="Texture2D" uid="uid://bkuo413otoxd5" path="res://assets/MDrawnAssets/Decorations/Light.png" id="7_e1cbu"]
+[ext_resource type="Texture2D" uid="uid://dvgapjlelk3qc" path="res://assets/MDrawnAssets/Decorations/Snowman.png" id="8_mngbo"]
+[ext_resource type="Texture2D" uid="uid://vm6ti56h4hjq" path="res://assets/MDrawnAssets/Decorations/Tree.png" id="9_4w45t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt2n2"]
 texture = ExtResource("2_pu3yx")

@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var turn_speed := 3.0
 @export var fly_speed := 150.0
 @export var max_height := 200.0
+@export var bank_angle := 15.0        
+@export var bank_smooth := 8.0   
+
 
 var height := 0.0
 
@@ -13,6 +16,17 @@ func _physics_process(delta):
 	# TURN (A / D)
 	var turn_input := Input.get_axis("move_left", "move_right")
 	rotation += turn_input * turn_speed * delta
+	
+	animated_sprite.flip_h = turn_input < 0
+
+	# VISUAL BANK
+	var target_bank := -turn_input * bank_angle
+	animated_sprite.rotation_degrees = lerp(
+		animated_sprite.rotation_degrees,
+		target_bank,
+		bank_smooth * delta
+	)
+
 
 	# FORWARD MOVEMENT (W)
 	var forward := Input.get_action_strength("move_forward")
@@ -33,10 +47,10 @@ func _physics_process(delta):
 
 	# ANIMATIONS
 	if height > 10:
-		animated_sprite.play("fly")
+		animated_sprite.play("default")
 	elif forward > 0:
-		animated_sprite.play("walk")
+		animated_sprite.play("default")
 	else:
-		animated_sprite.play("idle")
+		animated_sprite.play("default")
 
 	move_and_slide()
