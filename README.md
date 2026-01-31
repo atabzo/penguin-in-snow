@@ -1,1 +1,1 @@
-you better wait for this, the wait would be worth it fr! :)
+you better wait for this, it would be worth it! :)
