@@ -1,25 +1,42 @@
 extends CharacterBody2D
 
+@export var move_speed := 200.0
+@export var turn_speed := 3.0
+@export var fly_speed := 150.0
+@export var max_height := 200.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var height := 0.0
 
+@onready var animated_sprite := $AnimatedSprite2D
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func _physics_process(delta):
+	# TURN (A / D)
+	var turn_input := Input.get_axis("move_left", "move_right")
+	rotation += turn_input * turn_speed * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	# FORWARD MOVEMENT (W)
+	var forward := Input.get_action_strength("move_forward")
+	var direction := Vector2.UP.rotated(rotation)
+	velocity = direction * forward * move_speed
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	# FLY UP / DOWN (Space / Shift)
+	if Input.is_action_pressed("fly_up"):
+		height += fly_speed * delta
+	if Input.is_action_pressed("fly_down"):
+		height -= fly_speed * delta
+
+	height = clamp(height, 0.0, max_height)
+
+	# VISUAL FLY EFFECT
+	animated_sprite.position.y = -height
+	animated_sprite.scale = Vector2.ONE * (1.0 + height / 600.0)
+
+	# ANIMATIONS
+	if height > 10:
+		animated_sprite.play("fly")
+	elif forward > 0:
+		animated_sprite.play("walk")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		animated_sprite.play("idle")
 
 	move_and_slide()

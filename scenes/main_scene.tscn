@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdfaf3v28p7i5"]
+[gd_scene load_steps=14 format=3 uid="uid://cdfaf3v28p7i5"]
 
 [ext_resource type="Texture2D" uid="uid://dci1vgsovxr3d" path="res://assets/BG/bg1.jpg" id="1_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://dce0ny6i0l6si" path="res://assets/Winter/spritesheet.png" id="2_pu3yx"]
 [ext_resource type="Texture2D" uid="uid://dteutsypy36jn" path="res://assets/Winter/Terrain/Ice/Ice.png" id="3_gubc5"]
 [ext_resource type="PackedScene" uid="uid://coytmnnqpcdj0" path="res://scenes/pigeon.tscn" id="4_pu3yx"]
-[ext_resource type="Script" uid="uid://rtm1vxly7ybc" path="res://scripts/pigeon.gd" id="5_gubc5"]
+[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/BirdOnTree.png" id="5_c1pb6"]
+[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/FallenTree.png" id="6_6wevv"]
+[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/Light.png" id="7_e1cbu"]
+[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/Snowman.png" id="8_mngbo"]
+[ext_resource type="Texture2D" path="res://assets/MDrawnAssets/Tree.png" id="9_4w45t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt2n2"]
 texture = ExtResource("2_pu3yx")
@@ -611,18 +615,42 @@ layer_0/tile_data = PackedInt32Array(327682, 1769472, 6, 327681, 1703936, 6, 327
 layer_1/name = "Layer1"
 layer_1/tile_data = PackedInt32Array(851966, 1048576, 8, 917502, 1048576, 9, 851967, 1114112, 8, 917503, 1114112, 9, 1048569, 1048576, 10, 1114105, 1048576, 11, 1048570, 1114112, 10, 1114106, 1114112, 11, 786425, 1179648, 8, 851961, 1179648, 9, 786426, 1245184, 8, 851962, 1245184, 9, 589794, 1572864, 8, 655330, 1572864, 9, 720866, 1572864, 10, 786402, 1572864, 11, 589795, 1638400, 8, 655331, 1638400, 9, 720867, 1638400, 10, 786403, 1638400, 11, 1638391, 1572864, 8, 1703927, 1572864, 9, 1769463, 1572864, 10, 1834999, 1572864, 11, 1638392, 1638400, 8, 1703928, 1638400, 9, 1769464, 1638400, 10, 1835000, 1638400, 11, 720915, 1572864, 8, 786451, 1572864, 9, 851987, 1572864, 10, 917523, 1572864, 11, 720916, 1638400, 8, 786452, 1638400, 9, 851988, 1638400, 10, 917524, 1638400, 11, 1441832, 1572864, 8, 1507368, 1572864, 9, 1572904, 1572864, 10, 1638440, 1572864, 11, 1441833, 1638400, 8, 1507369, 1638400, 9, 1572905, 1638400, 10, 1638441, 1638400, 11, 589820, 262144, 4, 655356, 262144, 5, 720892, 262144, 6, 786428, 262144, 7, 589821, 327680, 4, 655357, 327680, 5, 720893, 327680, 6, 786429, 327680, 7, 393257, 262144, 4, 458793, 262144, 5, 524329, 262144, 6, 589865, 262144, 7, 393258, 327680, 4, 458794, 327680, 5, 524330, 327680, 6, 589866, 327680, 7, 786392, 0, 9, 851928, 0, 10, 917464, 0, 11, 786393, 65536, 9, 851929, 65536, 10, 917465, 65536, 11, 1638415, 0, 9, 1703951, 0, 10, 1769487, 0, 11, 1638416, 65536, 9, 1703952, 65536, 10, 1769488, 65536, 11)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_pu3yx")]
-position = Vector2(-405.99997, 171.99998)
-scale = Vector2(0.05, 0.05)
-script = ExtResource("5_gubc5")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(0, 100)
-scale = Vector2(19.999998, 19.999998)
-zoom = Vector2(3, 3)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(7, 416.5)
 shape = SubResource("RectangleShape2D_gubc5")
+
+[node name="Design" type="Node2D" parent="."]
+
+[node name="BirdOnTree" type="Sprite2D" parent="."]
+position = Vector2(237, 278)
+scale = Vector2(0.3053435, 0.3053435)
+texture = ExtResource("5_c1pb6")
+
+[node name="FallenTree" type="Sprite2D" parent="."]
+position = Vector2(-184.00002, 186)
+scale = Vector2(0.23626372, 0.2362637)
+texture = ExtResource("6_6wevv")
+
+[node name="Light" type="Sprite2D" parent="."]
+position = Vector2(542.00006, 85)
+scale = Vector2(0.40591398, 0.40591398)
+texture = ExtResource("7_e1cbu")
+
+[node name="Snowman" type="Sprite2D" parent="."]
+position = Vector2(487.125, 127)
+scale = Vector2(0.27150542, 0.24551971)
+texture = ExtResource("8_mngbo")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(322.3125, 233.91609)
+scale = Vector2(0.28869858, 0.28869858)
+texture = ExtResource("9_4w45t")
+
+[node name="Pigeon" parent="." instance=ExtResource("4_pu3yx")]
+position = Vector2(300, 315)
+scale = Vector2(0.6, 0.6)
+
+[node name="Camera2D" type="Camera2D" parent="Pigeon"]
+zoom = Vector2(2, 2)
