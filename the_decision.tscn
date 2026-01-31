@@ -127,7 +127,7 @@ theme_override_colors/font_color = Color(0.29887834, 0.0008664979, 0.48657012, 1
 theme_override_fonts/font = ExtResource("2_ynfxc")
 theme_override_font_sizes/font_size = 69
 text = "wait... are you okay with
-                          the pegions dying?"
+                          the pigeons dying?"
 
 [node name="Button" type="Button" parent="background"]
 offset_left = -940.0254

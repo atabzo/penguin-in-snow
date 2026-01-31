@@ -117,7 +117,7 @@ offset_bottom = 690.0
 theme_override_colors/font_color = Color(0.26377144, 0.0001453308, 0.3126142, 1)
 theme_override_fonts/font = ExtResource("1_olt8n")
 theme_override_font_sizes/font_size = 146
-text = "Save the Pegion!"
+text = "Save the Pigeons!"
 autowrap_mode = 2
 
 [node name="Sun" type="Sprite2D" parent="."]
