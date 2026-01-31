@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://coytmnnqpcdj0"]
+
+[ext_resource type="Texture2D" uid="uid://doo1c3ylsk60e" path="res://assets/Pigeon/Pigeon/Pigeon_fly/Pigeon_fly_1.png" id="1_jdx28"]
+[ext_resource type="Texture2D" uid="uid://c5o5l8q7dwhxf" path="res://assets/Pigeon/Pigeon/Pigeon_fly/Pigeon_fly_2.png" id="2_mi3ta"]
+[ext_resource type="Texture2D" uid="uid://b5q8r1mvdjgfh" path="res://assets/Pigeon/Pigeon/Pigeon_fly/Pigeon_fly_3.png" id="3_1qlm5"]
+[ext_resource type="Texture2D" uid="uid://bf4but8fcrm5a" path="res://assets/Pigeon/Pigeon/Pigeon_fly/Pigeon_fly_4.png" id="4_cj7ct"]
+[ext_resource type="Texture2D" uid="uid://cg2tdf0niamc2" path="res://assets/Pigeon/Pigeon/Pigeon_fly/Pigeon_fly_5.png" id="5_dvbny"]
+[ext_resource type="Texture2D" uid="uid://q2t18ai3jowh" path="res://assets/Pigeon/Pigeon/Pigeon_fly/Pigeon_fly_6.png" id="6_14xdm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq2ed"]
+atlas = ExtResource("1_jdx28")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d47kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq2ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mi3ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1qlm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cj7ct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dvbny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_14xdm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2so0f"]
+size = Vector2(863, 929)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d47kj")
+autoplay = "default"
+frame = 5
+frame_progress = 0.27517754
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11.5, 41.5)
+shape = SubResource("RectangleShape2D_2so0f")
