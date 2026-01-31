@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://coytmnnqpcdj0"]
+
+[ext_resource type="Script" uid="uid://rtm1vxly7ybc" path="res://scripts/pigeon.gd" id="1_mi3ta"]
+[ext_resource type="Texture2D" uid="uid://6fg7o05mw1mj" path="res://assets/MDrawnAssets/Bird/Idle_Animationleft.png" id="2_ga46t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d47kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ga46t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2so0f"]
+size = Vector2(64, 77)
+
+[node name="Pigeon" type="CharacterBody2D"]
+script = ExtResource("1_mi3ta")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d47kj")
+autoplay = "default"
+frame_progress = 0.27517754
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0.5)
+shape = SubResource("RectangleShape2D_2so0f")
