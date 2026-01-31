@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv46gswpwulnc"]
+[gd_scene load_steps=9 format=3 uid="uid://dv46gswpwulnc"]
 
 [ext_resource type="Texture2D" uid="uid://djpjn32ioj7wi" path="res://images/backdrop.jpg" id="1_p5xo7"]
 [ext_resource type="Texture2D" uid="uid://bc6fsk7w5yjco" path="res://images/textbg.png" id="2_721po"]
 [ext_resource type="FontFile" uid="uid://cffniahme70vv" path="res://fonts/BitcountPropDoubleInk.ttf" id="2_ynfxc"]
 [ext_resource type="Texture2D" uid="uid://d1bhj0ariykha" path="res://images/peeking.png" id="4_n5jvu"]
+[ext_resource type="AudioStream" uid="uid://cy6qgibifn0ig" path="res://sound-click.mp3" id="5_fd8ng"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd8ng"]
 bg_color = Color(0.27245283, 5.698681e-05, 0.99041396, 1)
@@ -13,6 +14,97 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0.7137255, 0.69803923)
 shadow_size = 14
+
+[sub_resource type="GDScript" id="GDScript_fd8ng"]
+script/source = "extends Button
+
+var tween: Tween
+@onready var click_sound = $\"../SoundClick\"
+
+func _ready():
+	pivot_offset = size / 2
+	
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	button_up.connect(_on_button_up)
+	pressed.connect(_on_pressed)
+
+func _on_mouse_entered():
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, \"scale\", Vector2(1.1, 1.1), 0.3)
+
+func _on_mouse_exited():
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, \"scale\", Vector2(1.0, 1.0), 0.3)
+
+func _on_button_up():
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, \"scale\", Vector2(1.1, 1.1), 0.2)
+
+func _on_pressed():
+	print(\"Exiting game...\")
+	
+	if click_sound:
+		click_sound.play()
+		# Wait for sound to finish before exiting
+		await click_sound.finished
+	
+	# Exit the game
+	get_tree().quit()
+"
+
+[sub_resource type="GDScript" id="GDScript_o4frt"]
+script/source = "extends Button
+	
+var tween: Tween
+@onready var click_sound = $\"../SoundClick\"
+
+# Define the scene you want to switch to
+@export_file(\"*.tscn\") var next_scene: String = \"res://game_scene.tscn\"
+
+func _ready():
+	pivot_offset = size / 2
+	
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	button_up.connect(_on_button_up)
+	pressed.connect(_on_pressed)
+
+func _on_mouse_entered():
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, \"scale\", Vector2(1.1, 1.1), 0.3)
+
+func _on_mouse_exited():
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, \"scale\", Vector2(1.0, 1.0), 0.3)
+
+func _on_button_up():
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, \"scale\", Vector2(1.1, 1.1), 0.2)
+
+func _on_pressed():
+	print(\"Button pressed!\")
+	
+	if click_sound:
+		click_sound.play()
+		# Wait for sound to finish before switching scenes
+		await click_sound.finished
+	
+	# Switch to the defined scene
+	get_tree().change_scene_to_file(next_scene)
+"
 
 [node name="the-decision" type="Node2D"]
 
@@ -48,6 +140,7 @@ theme_override_font_sizes/font_size = 72
 theme_override_styles/normal = SubResource("StyleBoxFlat_fd8ng")
 text = "well yeah? they're so useless anyway"
 autowrap_mode = 2
+script = SubResource("GDScript_fd8ng")
 
 [node name="Button3" type="Button" parent="background"]
 offset_left = 42.257248
@@ -59,7 +152,11 @@ theme_override_font_sizes/font_size = 69
 theme_override_styles/normal = SubResource("StyleBoxFlat_fd8ng")
 text = "uhm no, it's still a poor soul so we gotta do ts"
 autowrap_mode = 2
+script = SubResource("GDScript_o4frt")
 
 [node name="Peeking" type="Sprite2D" parent="."]
-position = Vector2(1164, 112)
+position = Vector2(1125, 137)
 texture = ExtResource("4_n5jvu")
+
+[node name="SoundClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fd8ng")
