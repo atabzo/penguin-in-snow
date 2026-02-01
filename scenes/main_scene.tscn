@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdfaf3v28p7i5"]
+[gd_scene load_steps=18 format=3 uid="uid://cdfaf3v28p7i5"]
 
 [ext_resource type="Texture2D" uid="uid://dci1vgsovxr3d" path="res://assets/BG/bg1.jpg" id="1_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://dce0ny6i0l6si" path="res://assets/Winter/spritesheet.png" id="2_pu3yx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dvgapjlelk3qc" path="res://assets/MDrawnAssets/Decorations/Snowman.png" id="8_mngbo"]
 [ext_resource type="Texture2D" uid="uid://vm6ti56h4hjq" path="res://assets/MDrawnAssets/Decorations/Tree.png" id="9_4w45t"]
 [ext_resource type="PackedScene" uid="uid://d1c78oowevwob" path="res://scenes/npc_1_bird.tscn" id="11_e1cbu"]
+[ext_resource type="PackedScene" uid="uid://dxda3cg0b28rt" path="res://bees.tscn" id="12_mngbo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt2n2"]
 texture = ExtResource("2_pu3yx")
@@ -715,6 +716,7 @@ size = Vector2(1518, 97)
 [node name="BG" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="BG"]
+position = Vector2(60, 8)
 texture = ExtResource("1_7ykc4")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -776,3 +778,5 @@ position = Vector2(595, 217)
 
 [node name="Npc1Bird2" parent="." instance=ExtResource("11_e1cbu")]
 position = Vector2(595, 217)
+
+[node name="bees" parent="." instance=ExtResource("12_mngbo")]

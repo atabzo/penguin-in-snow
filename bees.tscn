@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxda3cg0b28rt"]
+
+[ext_resource type="Texture2D" uid="uid://biu4axbmhcuxb" path="res://images/bees.png" id="1_dmru3"]
+
+[sub_resource type="GDScript" id="GDScript_pufxi"]
+script/source = "extends Node2D
+
+# Flying/Floating Animal Script
+# For birds, floating jellyfish, or any air-based creature
+# Uses Node2D (not CharacterBody2D) for more freedom
+
+@export var fly_speed = 80.0
+@export var min_idle_time = 1.0
+@export var max_idle_time = 3.0
+@export var min_fly_time = 4.0
+@export var max_fly_time = 8.0
+@export var roam_range = 300.0
+@export var vertical_range = 150.0  # How high/low it can go
+@export var can_flip = true
+@export var bob_amount = 5.0  # Gentle up/down bobbing
+@export var bob_speed = 2.0
+
+enum State { IDLE, FLYING }
+
+var current_state = State.IDLE
+var state_timer = 0.0
+var direction = Vector2.ZERO
+var spawn_position = Vector2.ZERO
+var bob_offset = 0.0
+
+func _ready():
+	spawn_position = global_position
+	_change_state(State.IDLE)
+
+func _process(delta):
+	# Update state timer
+	state_timer -= delta
+	
+	if state_timer <= 0:
+		match current_state:
+			State.IDLE:
+				_change_state(State.FLYING)
+			State.FLYING:
+				_change_state(State.IDLE)
+	
+	# Handle movement
+	match current_state:
+		State.IDLE:
+			# Just gentle bobbing when idle
+			bob_offset += bob_speed * delta
+			var bob = sin(bob_offset) * bob_amount
+			global_position.y = spawn_position.y + bob
+			
+		State.FLYING:
+			# Move in chosen direction
+			global_position += direction * fly_speed * delta
+			
+			# Add gentle bobbing while flying
+			bob_offset += bob_speed * delta
+			var bob = sin(bob_offset) * (bob_amount * 0.5)
+			global_position.y += bob * delta * 10
+			
+			# Check boundaries and turn around if needed
+			var distance_x = abs(global_position.x - spawn_position.x)
+			var distance_y = abs(global_position.y - spawn_position.y)
+			
+			if distance_x > roam_range:
+				direction.x *= -1
+				_update_sprite_direction()
+			
+			if distance_y > vertical_range:
+				direction.y *= -1
+
+func _change_state(new_state):
+	current_state = new_state
+	
+	match new_state:
+		State.IDLE:
+			state_timer = randf_range(min_idle_time, max_idle_time)
+			direction = Vector2.ZERO
+			_play_animation(\"idle\")
+			
+		State.FLYING:
+			state_timer = randf_range(min_fly_time, max_fly_time)
+			# Random direction in 2D
+			var angle = randf_range(0, TAU)  # Random angle
+			direction = Vector2(cos(angle), sin(angle)).normalized()
+			_update_sprite_direction()
+			_play_animation(\"fly\")
+
+func _update_sprite_direction():
+	if can_flip and has_node(\"Sprite2D\"):
+		$Sprite2D.flip_h = (direction.x < 0)
+
+func _play_animation(anim_name):
+	if has_node(\"AnimationPlayer\"):
+		if $AnimationPlayer.has_animation(anim_name):
+			$AnimationPlayer.play(anim_name)
+"
+
+[node name="bees" type="Node2D"]
+script = SubResource("GDScript_pufxi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(556, 31)
+scale = Vector2(0.25300002, 0.25600004)
+texture = ExtResource("1_dmru3")
