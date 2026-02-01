@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed := 200.0
+@export var move_speed := 350.0
 @export var turn_speed := 3.0
 @export var fly_speed := 150.0
 @export var max_height := 200.0

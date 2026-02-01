@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8isr7xyibt0o"]
+
+[ext_resource type="Texture2D" uid="uid://slw0kr0q7k18" path="res://assets/MDrawnAssets/Decorations/Penguin (1).png" id="1_x677k"]
+
+[sub_resource type="GDScript" id="GDScript_x677k"]
+script/source = "extends Area2D
+
+@onready var sprite: Area2D = $\".\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$\".\".body_entered.connect(_on_entered_npc1)
+
+
+func _on_entered_npc1(body):
+	if body is CharacterBody2D:
+		var dialogue_resource = load(\"res://dialogues/npc_1_1.dialogue\")
+		DialogueManager.show_dialogue_balloon(dialogue_resource, \"start\")
+		
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eiya0"]
+radius = 64.0
+
+[node name="Penguin" type="Area2D"]
+script = SubResource("GDScript_x677k")
+
+[node name="Penguin" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_x677k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eiya0")

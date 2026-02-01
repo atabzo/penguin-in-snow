@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8ccqoaqpig3t"]
+[gd_scene load_steps=11 format=3 uid="uid://b8ccqoaqpig3t"]
 
 [ext_resource type="FontFile" uid="uid://cffniahme70vv" path="res://fonts/BitcountPropDoubleInk.ttf" id="1_olt8n"]
 [ext_resource type="FontFile" uid="uid://dmuvcngp2i13b" path="res://fonts/CaesarDressing-Regular.ttf" id="1_xe7vm"]
 [ext_resource type="Texture2D" uid="uid://djbmb4upyko1a" path="res://images/sun.png" id="2_ktig4"]
 [ext_resource type="Texture2D" uid="uid://b5n8jvxvvjlts" path="res://images/flower.png" id="3_outur"]
 [ext_resource type="AudioStream" uid="uid://cy6qgibifn0ig" path="res://sound-click.mp3" id="4_fm0op"]
+[ext_resource type="Texture2D" uid="uid://bj355114nkqdk" path="res://images/home-screen/Titletext.png" id="6_gf7oa"]
 
 [sub_resource type="GDScript" id="GDScript_xe7vm"]
 script/source = "extends Sprite2D
@@ -105,10 +106,11 @@ var tween: Tween
 @onready var click_sound = $\"../SoundClick\"
 
 # Define the scene you want to switch to
-@export_file(\"*.tscn\") var next_scene: String = \"res://scenes/main_scene.tscn\"
+@export_file(\"*.tscn\") var next_scene: String = \"res://copy_main_scene.tscn\"
 
 func _ready():
 	pivot_offset = size / 2
+
 	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -142,7 +144,7 @@ func _on_pressed():
 		await click_sound.finished
 	
 	# Switch to the defined scene
-	get_tree().change_scene_to_file(next_scene)
+	get_tree().change_scene_to_file(\"res://objects/title_animation.tscn\")
 "
 
 [sub_resource type="GDScript" id="GDScript_gf7oa"]
@@ -178,11 +180,17 @@ func _process(delta):
 
 [node name="home-screen" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -1.0
+offset_right = 1296.0
+offset_bottom = 735.0
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 centered = false
 script = SubResource("GDScript_xe7vm")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 422.0
 offset_top = 361.0
 offset_right = 1221.0
@@ -207,6 +215,7 @@ text = "NEVERMIND"
 script = SubResource("GDScript_fm0op")
 
 [node name="Sun" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1115, 184)
 scale = Vector2(0.59650004, 0.6140001)
 texture = ExtResource("2_ktig4")
@@ -222,7 +231,11 @@ text = "LETS GOOO"
 script = SubResource("GDScript_outur")
 
 [node name="Flower" type="Sprite2D" parent="."]
-position = Vector2(132.99998, 107)
+position = Vector2(1176, 120)
 scale = Vector2(0.38, 0.374)
 texture = ExtResource("3_outur")
 script = SubResource("GDScript_gf7oa")
+
+[node name="Titletext" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("6_gf7oa")

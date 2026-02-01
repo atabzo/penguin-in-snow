@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://6fg7o05mw1mj" path="res://assets/MDrawnAssets/Bird/Idle_Animationleft.png" id="2_ga46t"]
 [ext_resource type="Texture2D" uid="uid://cvibrx4eh2jc6" path="res://assets/MDrawnAssets/Bird/Idle/Idle_Animationleft-2.png" id="3_oh15e"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2so0f"]
+size = Vector2(64, 77)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_d47kj"]
 animations = [{
 "frames": [{
@@ -27,18 +30,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2so0f"]
-size = Vector2(64, 77)
-
-[node name="Pigeon" type="CharacterBody2D"]
+[node name="Pigeon" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_mi3ta")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+position = Vector2(-1.9999999, 0.49999997)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_2so0f")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_d47kj")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0.5)
-shape = SubResource("RectangleShape2D_2so0f")
+[node name="IdleAnimationleft" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -9.536743e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ga46t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -9.536743e-07)
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(-6, -79.1, -6, -77.4, -19.5, -72, -21.8, -72, -35.9, -59, -37.2, -59, -43.2, -47, -44.6, -47, -50, -25.2, -50, -24, -61.9, -13, -63.2, -13, -71.2, 3, -74.2, 3, -66, 19.400002, -66, 22, -54.7, 31, -49, 41.5, -49, 43.899994, -30.7, 59, -29, 59, -29, 73.899994, -22, 79.899994, -22, 82.600006, -15.900002, 81, -12.900002, 81, -9.900002, 76, -8.699997, 76, -7.5999985, 73.7, -13, 67.2, -13, 64, 5.199997, 64, 6, 74.2, 6, 77.100006, 11, 80.100006, 11, 82.399994, 18.400002, 81, 21, 81, 25, 75.7, 25, 72.2, 20, 67.2, 20, 62.399994, 40.4, 55, 42.800003, 55, 53.800003, 44, 55.399994, 44, 62, 24.300003, 62, 9.699997, 59, -0.30000305, 59, -4.699997, 51.5, -14.400002, 53, -18.699997, 53, -36.5, 49, -44.5, 49, -47.6, 44, -55.7, 44, -58, 27, -71, 27, -72.4, 16, -76.5, 16, -77.9)
